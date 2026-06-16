@@ -17,6 +17,19 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
 [data-testid="stSidebar"] {
     background-color: #16191f !important;
     border-right: 1px solid #2a2d35;
+    width: 320px !important;
+}
+
+[data-testid="stSidebar"] button,
+[data-testid="stSidebar"] .stButton>button {
+    min-height: 46px !important;
+    font-size: 14px !important;
+    border-radius: 14px !important;
+    padding: 12px 16px !important;
+}
+
+[data-testid="stSidebar"] .stRadio > div {
+    gap: 10px !important;
 }
 
 /* Cards */
@@ -105,6 +118,26 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
     font-size: 11px;
     color: #ffffff;
     margin-top: 2px;
+}
+
+/* Streamlit buttons */
+.stButton>button {
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #2166ef, #3e8cff);
+    color: #ffffff;
+    font-weight: 600;
+    border: 1px solid #2a2d35;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.stButton>button:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #3e8cff, #1a5ddb);
+}
+.stButton>button:focus {
+    outline: 2px solid rgba(79, 142, 247, 0.5);
 }
 
 /* Divider */

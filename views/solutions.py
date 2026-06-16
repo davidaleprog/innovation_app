@@ -15,14 +15,13 @@ def _render_list():
     st.markdown("# Solutions Portfolio")
     st.markdown("<div style='color:#6b7280;font-size:14px;margin-bottom:20px;'>All benchmarked POCs and research proposals from the S&I team</div>", unsafe_allow_html=True)
 
-    col_f1, col_f2 = st.columns([1, 1])
+    col_f1 = st.columns([1])[0]
     filter_type = col_f1.selectbox("Type", ["All", "POC", "Proposal"])
-    filter_domain = col_f2.selectbox("Domain", ["All"] + sorted(set(s["domain"] for s in SOLUTIONS)))
 
     filtered = [
         s for s in SOLUTIONS
         if (filter_type == "All" or s["type"] == filter_type)
-        and (filter_domain == "All" or s["domain"] == filter_domain)
+        
     ]
 
     for s in filtered:
@@ -35,8 +34,7 @@ def _render_list():
             extra += f"<div style='margin-top:8px;font-size:12px;color:#6b7280;'>Difficulty: {stars(s.get('difficulty', 0))}</div>"
         card = (
             f"<div class='card'>"
-            f"<div style='display:flex;justify-content:space-between;align-items:flex-start;'>"
-            f"<div><span style='font-size:11px;color:#4b5563;'>{s['id']} · {s['type']} · {s['domain']}</span>"
+            f"<div><span style='font-size:11px;color:#4b5563;'>{s['id']} · {s['type']}</span>"
             f"<div class='card-title'>{title}</div></div>"
             f"<span style='font-size:11px;font-weight:600;color:{status_color};'>&#9679; {s['status']}</span>"
             f"</div>"
@@ -68,7 +66,7 @@ def _render_detail(sol_id):
     <div class="card" style="border-color:#4f8ef7;margin-bottom:24px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;">
             <div>
-                <span style="font-size:11px;color:#4b5563;">{sol['id']} · {sol['type']} · {sol['domain']}</span>
+                <span style="font-size:11px;color:#4b5563;">{sol['id']} · {sol['type']}</span>
                 <div class="card-title" style="font-size:20px;margin-top:4px;">{html.escape(sol['title'])}</div>
             </div>
             <span style="font-size:13px;font-weight:600;color:{status_color};">● {sol['status']}</span>
@@ -88,9 +86,7 @@ def _render_detail(sol_id):
         st.markdown(f"""
         <div class="card">
             <div style="font-size:12px;color:#6b7280;margin-bottom:4px;">Type</div>
-            <div style="color:#d1d5db;font-size:13px;margin-bottom:12px;">{sol['type']}</div>
-            <div style="font-size:12px;color:#6b7280;margin-bottom:4px;">Domain</div>
-            <div style="color:#d1d5db;font-size:13px;margin-bottom:12px;">{sol['domain']}</div>
+                <div style="color:#d1d5db;font-size:13px;margin-bottom:12px;">{sol['type']}</div>
             <div style="font-size:12px;color:#6b7280;margin-bottom:4px;">Difficulty</div>
             <div style="font-size:13px;margin-bottom:12px;">{stars(sol.get('difficulty', 0))}</div>
             <div style="font-size:12px;color:#6b7280;margin-bottom:4px;">Status</div>
