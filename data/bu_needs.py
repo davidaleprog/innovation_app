@@ -1,0 +1,57 @@
+BU_NEEDS = [
+    {
+        "id": "BU-001",
+        "unit": "Operations — Plant Lyon",
+        "title": "Reduce false alarms on sensor lines",
+        "desc": "We have hundreds of IoT sensors producing time-series readings. Current rule-based threshold triggers too many false positives. We need a smarter approach.",
+        "urgency": "High",
+        "contact": "jean.moreau@company.com",
+        "keywords": ["anomaly", "time series", "detection", "sensor", "false alarm"],
+    },
+    {
+        "id": "BU-002",
+        "unit": "HR — Talent Acquisition",
+        "title": "Search through internal policy documents faster",
+        "desc": "Our HR team spends hours cross-referencing PDFs of policies. We want to ask questions in plain language and get accurate answers with source references.",
+        "urgency": "Medium",
+        "contact": "kate.wilson@company.com",
+        "keywords": ["document", "PDF", "search", "query", "knowledge", "text"],
+    },
+    {
+        "id": "BU-003",
+        "unit": "Supply Chain — Central",
+        "title": "Better inventory planning for seasonal SKUs",
+        "desc": "Our top 200 SKUs have strong seasonality. We over-order in Q4 and under-order in Q2. We need a forecasting model that can be updated monthly.",
+        "urgency": "High",
+        "contact": "luc.petit@company.com",
+        "keywords": ["forecast", "inventory", "supply", "stock", "demand", "seasonal", "predict"],
+    },
+    {
+        "id": "BU-004",
+        "unit": "Legal — Procurement",
+        "title": "Speed up supplier contract review",
+        "desc": "Reviewing 50+ contracts per quarter manually is bottleneck. Need automated flagging of non-standard clauses and missing obligations.",
+        "urgency": "Medium",
+        "contact": "marie.dubois@company.com",
+        "keywords": ["contract", "legal", "clause", "review", "compliance", "supplier"],
+    },
+    {
+        "id": "BU-005",
+        "unit": "Manufacturing — Bordeaux",
+        "title": "Automate visual quality checks on Line 3",
+        "desc": "Line 3 produces 3 000 units/day. Manual inspection catches only 70% of surface defects. We want a camera-based system to assist operators.",
+        "urgency": "High",
+        "contact": "nicolas.roux@company.com",
+        "keywords": ["inspection", "defect", "visual", "manufacturing", "quality", "production"],
+    },
+
+    {
+        "id": "BU-006",
+        "unit": "Operations — Data Centers",
+        "title": "Improve Load consumption prediction",
+        "desc": "We need to predict the load consumption for our data centers more accurately to optimize energy usage and reduce costs. Current models are not capturing the variability effectively.",
+        "urgency": "Medium",
+        "contact": "olivia.faure@company.com",
+        "keywords": ["load demand", "prediction", "energy", "optimization", "time series"],
+    }
+]
