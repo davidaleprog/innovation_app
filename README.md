@@ -4,6 +4,8 @@
 
 A Streamlit-based demonstration of a systematic workflow to bridge the gap between S&I innovation projects and business demand, reducing time-to-impact while ensuring solutions are discoverable, reusable, and impactful.
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/<your-username>/<your-repo>/main) [![Run in Docker](https://img.shields.io/badge/Docker-Run-blue)](https://hub.docker.com/)
+
 ---
 
 ## 🎯 The Challenge
@@ -155,231 +157,33 @@ Systematically answer questions for prioritization:
 
 ---
 
-## ✨ Platform Features
+## Installation
 
-### 📊 Overview Dashboard
-- Real-time statistics (# solutions, # needs, # matches)
-- Historical activity feed (recent benchmarks, registrations, new matches)
-- Interactive workflow visualization
-- Quick links to each module
+Run the app locally or deploy it to Streamlit Cloud. Quick instructions below — copy & paste.
 
-### 🧪 Solutions Portfolio
-- Filterable grid of POCs and proposals
-- Filter by: Type (POC/Proposal), Domain, Status
-- Each card displays title, description, tags, and status badge
-- Click to expand and see:
-  - Full description and methodology
-  - Benchmarked metrics and results
-  - Difficulty score and resource requirements
-  - Links to reproducible code and demo
-  - Matched business needs ranked by relevance
-
-### 🏢 Business Unit Needs
-- Structured pain-point cards with urgency indicators
-- Organized by business unit and category
-- Keywords and tags for semantic matching
-- Click to see:
-  - Detailed problem context
-  - Strategic importance and timeline
-  - Matched innovation solutions ranked by relevance score
-  - Contact information for further dialogue
-
-### 🔗 Matching Engine
-Two complementary views:
-
-- **📍 Find Solutions** — Select a business need → see all ranked solutions with relevance % bars
-- **📋 Heatmap** — Full solution × need correlation matrix, color-coded by match strength (green=strong, yellow=partial, red=weak/none)
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.8+
-- pip
-
-### Installation
-
+Run locally
 ```bash
-# Clone repository
-git clone https://github.com/davidaleprog/innovation_app.git
-cd innovation_app
-
-# Create virtual environment (optional but recommended)
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
+# Windows
+venv\Scripts\activate
+# macOS / Linux
+source venv/bin/activate
 pip install -r requirements.txt
-```
-
-### Run Locally
-
-```bash
 streamlit run app.py
 ```
 
-The app opens at `http://localhost:8501`
+Streamlit Cloud (easy deploy)
 
----
+1. Push this repository to GitHub.
+2. Go to https://share.streamlit.io and connect your GitHub account.
+3. Select this repository and the branch (e.g. `main`) to deploy.
+4. Use the live URL shown by Streamlit Cloud. Replace the Streamlit badge link above with the live URL when available.
 
-## 📁 Project Structure
+Optional: Docker
 
-```
-innovation_app/
-├── app.py                      # Main Streamlit entry point
-├── data.py                     # Solution & BU need data models
-├── styles.py                   # Shared CSS styling
-├── utils.py                    # Matching algorithms & helpers
-├── views/
-│   ├── __init__.py
-│   ├── overview.py            # Dashboard & workflow intro
-│   ├── solutions.py           # Portfolio list + detail view
-│   ├── bu_needs.py            # BU needs list + detail view
-│   └── matching.py            # Semantic search & heatmap
-├── media/                      # Screenshots & assets
-├── data/                       # Data models and sample data
-│   ├── __init__.py
-│   ├── solutions.py          # Solution catalog
-│   └── bu_needs.py           # Business unit needs
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
----
-
-## 🔧 Matching Algorithm
-
-Currently uses **keyword overlap** as a matching proxy:
-
-$$\text{Match Score} = \frac{|\text{Solution Keywords} \cap \text{Need Keywords}|}{min(|S|, |N|)} \times 100$$
-
-**Match Strength Legend:**
-- 🟢 **Strong (≥60%)** — high semantic similarity, likely relevant
-- 🟡 **Partial (30–59%)** — moderate overlap, worth exploring
-- 🔴 **Weak (<30%)** — minimal connection, likely irrelevant
-
-**Future Enhancement:** Vector embeddings (e.g., OpenAI embeddings + semantic search) for more sophisticated similarity detection across unstructured documentation.
-
----
-
-## 📊 Data Models
-
-### Solution
-```python
-{
-    "id": "SOL-001",
-    "title": "Anomaly Detection Framework",
-    "type": "POC",  # or "Proposal"
-    "domain": "Quality Control",
-    "tags": ["time-series", "images", "unsupervised"],
-    "difficulty": 3,
-    "desc": "Full description...",
-    "status": "Available",  # or "Proposed"
-    "keywords": ["anomaly", "defect", "detection", ...]
-}
-```
-
-### BU Need
-```python
-{
-    "id": "BU-001",
-    "unit": "Operations — Plant Lyon",
-    "title": "Reduce false alarms on sensor lines",
-    "desc": "Full problem statement...",
-    "urgency": "High",  # or "Medium", "Low"
-    "keywords": ["anomaly", "time series", "detection", ...]
-}
-```
-
----
-
-## 🎓 Example Workflow
-
-1. **Browse Solutions** → See "Anomaly Detection Framework" (POC, ⭐⭐⭐ difficulty)
-2. **Click "View details"** → Read full description, see matching needs
-3. **See Match** → "Reduce false alarms on sensor lines" (🟢 Strong 80% match)
-4. **Click "View need details"** → Understand plant Lyon's pain point
-5. **See Matched Solutions** → Confirm anomaly detection is ranked #1 for this need
-6. **Take Action** → Connect operations team with S&I team
-
----
-
-## 💼 Use Cases
-
-### **For S&I Teams**
-- **Portfolio Review:** See all past POCs and understand what's been explored
-- **Avoid Duplication:** Search before starting new project
-- **Discover Reusability:** Find related work to abstract and generalize
-- **Track Impact:** Monitor which solutions get adopted
-
-### **For Business Units**
-- **Solution Discovery:** Describe a problem → find relevant past innovations
-- **Accelerated Pilots:** Access benchmarked POCs ready for customization
-- **Prioritize Needs:** Vote on proposals to guide S&I exploration roadmap
-- **Cross-Team Learning:** Share pain points and solutions across BUs
-
----
-
-## 🛠️ Configuration & Extension
-
-### Add New Solutions
-
-Edit `data.py` → append to `SOLUTIONS`:
-
-```python
-{
-    "id": "SOL-007",
-    "title": "Your Innovation Title",
-    "type": "POC",
-    "domain": "Your Domain",
-    "tags": ["tag1", "tag2"],
-    "difficulty": 2,
-    "desc": "Problem it solves...",
-    "status": "Available",
-    "keywords": ["keyword1", "keyword2", ...],
-}
-```
-
-### Add New BU Needs
-
-Edit `data.py` → append to `BU_NEEDS`:
-
-```python
-{
-    "id": "BU-006",
-    "unit": "Your Business Unit",
-    "title": "Your Problem",
-    "desc": "Detailed problem statement...",
-    "urgency": "High",
-    "keywords": ["keyword1", "keyword2", ...],
-}
-```
-
-### Customize Styling
-
-Edit `styles.py` to change colors, fonts, or component styling. Currently uses a professional dark theme with blue accents.
-
----
-
-## 🚢 Deployment
-
-### Option 1: Streamlit Cloud (Recommended) ⭐
-
-1. Push repo to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect your GitHub account
-4. Select this repository → Deploy
-5. Get live URL: `https://your-app.streamlit.app`
-
-### Option 2: Hugging Face Spaces
-
-1. Create new Space with Streamlit runtime
-2. Link to this GitHub repo
-3. Auto-deploys on push
-
-### Option 3: Docker + Cloud Run / Railway / Render
+Create a `Dockerfile` (example below) and build the image to run anywhere.
 
 ```dockerfile
 FROM python:3.9-slim
@@ -387,63 +191,26 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["streamlit", "run", "app.py"]
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
 ```
 
----
+Build and run:
+```bash
+docker build -t innovation_app .
+# Run the container, mapping the container port 8501 to the host
+docker run --rm -p 8501:8501 innovation_app
 
-## 📈 Success Criteria
+# If you want to mount the code (for live edits) and use the host Python
+# (useful for development), run the app locally instead of inside Docker.
 
-An effective Innovation Marketplace achieves:
+Open http://localhost:8501 in your browser after the container starts.
+```
 
-1. ✅ **Reduced Time-to-Impact** — faster connection between innovation and business need
-2. ✅ **Increased Reusability** — solutions generalized and applied across multiple contexts
-3. ✅ **Improved Resource Efficiency** — less redundant work, better-informed project decisions
-4. ✅ **Better Risk Mitigation** — proposals expose difficulty and resource requirements upfront
-5. ✅ **Enhanced Visibility** — all innovations and needs discoverable and searchable
-6. ✅ **Asynchronous Collaboration** — no dependency on perfect timing between teams
+Optional: Hugging Face Spaces
 
----
+1. Create a new Space with the Streamlit runtime.
+2. Link the GitHub repository and deploy. Use the badge above if you publish there.
 
-## 📖 Conceptual Foundations
+Try it (placeholder)
 
-This workflow is grounded in the principle that **innovation is knowledge that needs a home**.
-
-By creating a digital, semantic, and accessible place for solutions and needs to coexist:
-- Solutions don't languish in notebooks or emails
-- Business needs don't go unanswered for lack of visibility
-- The entire organization benefits from shared learning
-- Innovation becomes a scalable organizational capability, not a scarce resource
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! To add features:
-
-1. Fork the repo
-2. Create feature branch (`git checkout -b feature/my-feature`)
-3. Commit changes (`git commit -m "Add my feature"`)
-4. Push to branch (`git push origin feature/my-feature`)
-5. Open a Pull Request
-
----
-
-## 📝 License
-
-MIT License — see [LICENSE](LICENSE) file for details.
-
----
-
-## 👤 Author
-
-**Alexis David** — Schneider Electric Innovation Team
-
-- 🔗 [GitHub](https://github.com/davidaleprog)
-- 💼 [LinkedIn](https://linkedin.com/in/alexis-david)
-
----
-
-**Questions or Feedback?** Open an issue or reach out!  
-**Last Updated:** June 2026  
-**Version:** 1.0 (Alpha Demo)
+Once deployed, add a direct `Try it` link near the top of this README pointing to the Streamlit URL so visitors can open the app in one click.
