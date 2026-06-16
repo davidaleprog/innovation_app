@@ -1,12 +1,9 @@
 # 🔬 Innovation Marketplace
 
-> **An asynchronous semantic matching platform connecting innovation solutions with business unit needs.**
 
-A Streamlit-based demonstration of a systematic workflow to bridge the gap between S&I innovation projects and business demand, reducing time-to-impact while ensuring solutions are discoverable, reusable, and impactful.
+### Click here to try demo : [https://innovationapp-grxybcbwql8t9vufwpfuyr.streamlit.app/](https://innovationapp-grxybcbwql8t9vufwpfuyr.streamlit.app/)
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/<your-username>/<your-repo>/main) [![Run in Docker](https://img.shields.io/badge/Docker-Run-blue)](https://hub.docker.com/)
 
----
 
 ## 🎯 The Challenge
 
@@ -156,61 +153,3 @@ Systematically answer questions for prioritization:
 - **Interface:** Dedicated persons or LLMs mediate between domains
 
 ---
-
-## Installation
-
-Run the app locally or deploy it to Streamlit Cloud. Quick instructions below — copy & paste.
-
-Run locally
-```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS / Linux
-source venv/bin/activate
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-Streamlit Cloud (easy deploy)
-
-1. Push this repository to GitHub.
-2. Go to https://share.streamlit.io and connect your GitHub account.
-3. Select this repository and the branch (e.g. `main`) to deploy.
-4. Use the live URL shown by Streamlit Cloud. Replace the Streamlit badge link above with the live URL when available.
-
-Optional: Docker
-
-Create a `Dockerfile` (example below) and build the image to run anywhere.
-
-```dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
-```
-
-Build and run:
-```bash
-docker build -t innovation_app .
-# Run the container, mapping the container port 8501 to the host
-docker run --rm -p 8501:8501 innovation_app
-
-# If you want to mount the code (for live edits) and use the host Python
-# (useful for development), run the app locally instead of inside Docker.
-
-Open http://localhost:8501 in your browser after the container starts.
-```
-
-Optional: Hugging Face Spaces
-
-1. Create a new Space with the Streamlit runtime.
-2. Link the GitHub repository and deploy. Use the badge above if you publish there.
-
-Try it (placeholder)
-
-Once deployed, add a direct `Try it` link near the top of this README pointing to the Streamlit URL so visitors can open the app in one click.
